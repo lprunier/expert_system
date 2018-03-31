@@ -14,6 +14,7 @@ def andfunct(x, y, letterlist):
     # print("x = {}\ny = {}\nx and y = {}".format(x, y, (int(x) and int(y))))
     return (int(x) and int(y))
 
+
 def orfunct(x, y, letterlist):
     if '!' in x:
         if (x[1] in letterlist): x = '0'
@@ -30,6 +31,7 @@ def orfunct(x, y, letterlist):
     # print("x = {}\ny = {}\nx or y = {}".format(x, y, (int(x) or int(y))))
     return (int(x) or int(y))
 
+
 def xorfunct(x, y, letterlist):
     if ('!' in x):
         if (x[1] in letterlist): x = '0'
@@ -44,4 +46,4 @@ def xorfunct(x, y, letterlist):
         if (y in letterlist): y = '1'
         elif y != '0' and y != '1': y = '0'
     # print("x = {}\ny = {}\nx xor y = {}".format(x, y, abs(int(x) - int(y))))
-    return (int(x) != int(y))
+    return (abs(int(x) - int(y)))
