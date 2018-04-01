@@ -29,7 +29,6 @@ def checkreq(split, begin, end, letterlist):
     else:
         while (segments(split, begin, end) == 1):
             replacequotes(split, begin, end, letterlist)
-            print(split)
         end = findend(split) - 1
         return checkreq(split, begin, end, letterlist)
     return 0
@@ -39,17 +38,35 @@ def decrypt(request, letterlist):
     split = str.split(request)
     i = findend(split)
     if checkreq(split, 0, i - 1, letterlist):
-        print("propal ok")
+        # print("propal ok")
         return putletteron(split, findend(split) + 1, letterlist)
     else:
-        print("propal ko")
+        # print("propal ko")
         return letterlist
 
 
 def main(argv):
-    # print("{}".format(argv[0]))
-    letterlist = decrypt(argv[0], argv[1])
-    print(letterlist)
+    request = []
+    request.append("A | B + C => E")
+    request.append("( F | G ) + H => E")
+    request.append("A ^ B => C")
+    letterlist = "A"
+    askletter = "BE"
+    printfirstreq(request)
+    print("\033[0;4mTrue letters list:\033[0;0m \033[0;1m{}\033[0;0m".format(letterlist))
+    print("\033[0;4mAsked letters list:\033[0;0m \033[0;1m{}\033[0;0m\n\n\n\033[0;1mRESOLUTION\033[0;0m\n".format(askletter))
+    i = 0
+    l = len(request)
+    while i < l:
+        ret = decrypt(request[i], letterlist)
+        if ret != letterlist: 
+            letterlist = ret
+            printreq(request[i], letterlist)
+            # print("\033[0;1m{}\033[0;0m\n".format(letterlist))
+            i = -1
+        i += 1
+    print("\n\033[0;1mRESULTS\033[0;0m\n")
+    printres(askletter, letterlist)
 
 
 if __name__ == "__main__":

@@ -11,3 +11,34 @@ def putletteron(split, i, letterlist):
             elif ("!" in split[i]) == 1 and (split[i][1] in letterlist) == 1: letterlist = letterlist.replace(split[i][1],'')
             i += 1
     return letterlist
+
+
+def printreq(str, letterlist):
+    split = str.split("=>")
+    if len(letterlist) == 0:
+        print("\033[32;1m'{}' \033[0;0mis true, we will make\033[33;1m '{}'\033[0;0m true.\n".format(split[0].strip(' '), split[1].strip(' ')))
+    elif len(letterlist) == 1:
+        print("\033[32;1m'{}' \033[0;0mis true, we will make\033[33;1m '{}'\033[0;0m true. So \033[0;1m{}\033[0;0m is true.\n".format(split[0].strip(' '), split[1].strip(' '), letterlist))
+    else:
+        print("\033[32;1m'{}' \033[0;0mis true, we will make\033[33;1m '{}'\033[0;0m true. So \033[0;1m{}\033[0;0m are true.\n".format(split[0].strip(' '), split[1].strip(' '), letterlist))
+
+
+def printfirstreq(req):
+    i = 0
+    l = len(req)
+    print("\n\033[0;4mRequests:\033[0m")
+    while i < l:
+        print("\033[0;1m{}\033[0;0m".format(req[i]))
+        i += 1
+
+
+def printres(askletter, letterlist):
+    i = 0
+    l = len(askletter)
+    while i < l:
+        if askletter[i] in letterlist:
+            print("\033[32;1m{}\033[0;0m is TRUE.".format(askletter[i]))
+        else:
+            print("\033[31;1m{}\033[0;0m is FALSE.".format(askletter[i]))
+        i += 1
+    print("")
