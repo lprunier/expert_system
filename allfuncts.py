@@ -19,3 +19,13 @@ def findend(split):
         i += 1
     return i
 
+
+def ope(x):
+    if x == '+' or x == '^' or x == '|': return 1
+    else: return 0
+
+
+def char(x):
+    if x >= 'A' and x <= 'Z': return 1
+    elif len(x) == 2 and x[0] == '!' and x[1] >= 'A' and x[1] <= 'Z': return 1
+    else: return 0

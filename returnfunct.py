@@ -1,3 +1,5 @@
+import sys
+
 def putletteron(split, i, letterlist):
     # print("i = {}\nlen = {}\n type{}".format(i, len(split), type(letterlist)))
     if i + 1 == len(split) and ("!" in split[i]) == 0:
@@ -42,3 +44,8 @@ def printres(askletter, letterlist):
             print("\033[31;1m{}\033[0;0m is FALSE.".format(askletter[i]))
         i += 1
     print("")
+
+
+def error(str):
+    print("\033[31;1mError\033[0;0m : {}".format(str))
+    sys.exit(1)

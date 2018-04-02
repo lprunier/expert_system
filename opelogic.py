@@ -47,3 +47,13 @@ def xorfunct(x, y, letterlist):
         elif y != '0' and y != '1': y = '0'
     # print("x = {}\ny = {}\nx xor y = {}".format(x, y, abs(int(x) - int(y))))
     return (abs(int(x) - int(y)))
+
+
+def letterfunct(x, letterlist):
+    if x == '0' or x == '1': return int(x)
+    elif '!' in x:
+        if x[1] in letterlist: return 0
+        else: return 1
+    else:
+        if x in letterlist: return 1
+        else: return 0 

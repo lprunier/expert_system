@@ -2,6 +2,7 @@ import sys
 from opelogic import *
 from allfuncts import *
 from returnfunct import *
+from check import *
 
 
 def replacequotes(split, begin, end, letterlist):
@@ -18,7 +19,9 @@ def replacequotes(split, begin, end, letterlist):
 
 def checkreq(split, begin, end, letterlist):
     # fonction recursive pour checker si la proposition est vraie
-    if end - begin < 3:
+    if end - begin < 1:
+        return (letterfunct(split[begin], letterlist))
+    elif end - begin < 3:
         if split[begin + 1] == "+": return andfunct(split[begin], split[end], letterlist)
         if split[begin + 1] == "|": return orfunct(split[begin], split[end], letterlist)
         if split[begin + 1] == "^": return xorfunct(split[begin], split[end], letterlist)
@@ -47,11 +50,12 @@ def decrypt(request, letterlist):
 
 def main(argv):
     request = []
-    request.append("A | B + C => E")
-    request.append("( F | G ) + H => E")
-    request.append("A ^ B => C")
-    letterlist = "A"
-    askletter = "BE"
+    request.append("B + C => A")
+    request.append("(D ^ E) | (!D ^ E) => B + C")
+    request.append("B => C")
+    letterlist = "D"
+    askletter = "ABCDE"
+    checkfunct(request, letterlist, askletter)
     printfirstreq(request)
     print("\033[0;4mTrue letters list:\033[0;0m \033[0;1m{}\033[0;0m".format(letterlist))
     print("\033[0;4mAsked letters list:\033[0;0m \033[0;1m{}\033[0;0m\n\n\n\033[0;1mRESOLUTION\033[0;0m\n".format(askletter))
