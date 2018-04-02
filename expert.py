@@ -27,9 +27,12 @@ def checkreq(split, begin, end, letterlist):
         if split[begin + 1] == "|": return orfunct(split[begin], split[end], letterlist)
         if split[begin + 1] == "^": return xorfunct(split[begin], split[end], letterlist)
     elif segments(split, begin, end) == 0:
-        res = checkreq(split, begin, begin + 2, letterlist)
-        split[begin + 2] = str(res)
-        return checkreq(split, begin + 2, end, letterlist)
+        btwo, etwo = priority(split, begin, end)
+        res = checkreq(split, btwo, etwo, letterlist)
+        split[btwo] = str(res)
+        del split[btwo + 1]
+        del split[btwo + 1]
+        return checkreq(split, begin, end - 2, letterlist)
     else:
         while (segments(split, begin, end) == 1):
             replacequotes(split, begin, end, letterlist)

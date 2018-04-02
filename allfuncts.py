@@ -29,3 +29,19 @@ def char(x):
     if x >= 'A' and x <= 'Z': return 1
     elif len(x) == 2 and x[0] == '!' and x[1] >= 'A' and x[1] <= 'Z': return 1
     else: return 0
+
+
+def priority(split, begin, end):
+    i = begin
+    while i <= end:
+        if split[i] == '+': return i - 1, i + 1
+        i += 1
+    i = begin
+    while i <= end:
+        if split[i] == '|': return i - 1, i + 1
+        i += 1
+    i = begin
+    while i <= end:
+        if split[i] == '^': return i - 1, i + 1
+        i += 1
+    return begin, end
