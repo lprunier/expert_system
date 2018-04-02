@@ -1,0 +1,13 @@
+# oh un commentaire
+
+A + E => C
+C => D  #en voila un autre
+B ^ ( A + F ) => E
+F => !B
+
+ =BF
+
+?ABCDEF
+
+# F et E sont vrais
+

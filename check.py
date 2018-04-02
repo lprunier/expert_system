@@ -44,6 +44,22 @@ def formatreq(str):
     return str
 
 
+def checkletterlist(letterlist):
+    i = 0
+    l = len(letterlist)
+    while i < l:
+        if char(letterlist[i]) == 0: error("="+letterlist+" Syntax error.") 
+        i += 1
+
+
+def checkaskletter(askletter):
+    i = 0
+    l = len(askletter)
+    while i < l:
+        if char(askletter[i]) == 0: error("?"+askletter+" Syntax error.") 
+        i += 1    
+
+
 def checkfunct(request, letterlist, askletter):
     i = 0
     l = len(request)
@@ -51,3 +67,5 @@ def checkfunct(request, letterlist, askletter):
         checkrequest(request[i]) == 0
         request[i] = formatreq(request[i])
         i += 1
+    checkletterlist(letterlist)
+    checkaskletter(askletter)

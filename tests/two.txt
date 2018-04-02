@@ -1,0 +1,12 @@
+# oh un commentaire
+
+A + E => C
+C => D
+B ^ ( A + F ) => E
+F => !B
+
+=BA
+
+?ABCDEF
+
+# A B C D et E sont vrais
